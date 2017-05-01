@@ -1,0 +1,11 @@
+@media desktop {
+  @media (min-width: $deskres){
+    @content;
+  }
+}
+
+  @mixin tablet{
+    @media (mix-width: $tabletres){
+      @content;
+    }
+  }
