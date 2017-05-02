@@ -32,10 +32,10 @@ $(document).ready(function () {
           var pic = value.multimedia[4].url;
           var abstract = value.abstract;
           var link = '';
-          link += '<li class="article-list">';
+
+          link += '<li class="article-list" style="background-image:url('+pic +')">';
           link += '<a href="' + url + '">' +
-            '<img src ="' + pic + '" />' +
-            '<p>' + abstract + '</p> </a>';
+         '<p class="headline">' + abstract + '</p> </a>';
           link += '</li>';
 
           $('.stories').append(link);
