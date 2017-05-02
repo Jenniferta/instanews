@@ -1,14 +1,16 @@
 // The document is ready
 $(document).ready(function () {
-  console.log('This is my jQuery...');
+
 
   //preventing the default refresh from happening//
 
   $('.drop-down').on('change', function (event) {
+    $('.loader').before('<img src="../assets/images/ajax-loader.gif" id="loader>')
     event.preventDefault();
+    $('.stories').empty();
 
     var selection = $('.drop-down option:selected').filter(':selected').val();
-    console.log(selection);
+
 
     // Built by LucyBot. www.lucybot.com
     var url = 'https://api.nytimes.com/svc/topstories/v2/' + selection + '.json';
@@ -16,20 +18,14 @@ $(document).ready(function () {
       'api-key': "d390d4787e77488aa56edb4391f01cfb"
     });
 
-    console.log(url);
 
     $.ajax({
       url: url,
       method: 'GET',
     })
       .done(function (response) {
-
-        console.log('IN DONE');
-
         var results = response.results;
         var filteredList = results.filter(function (item) { return item.multimedia.length }).slice(0, 12);
-        console.log(filteredList);
-
         $.each(filteredList, function (key, value) {
 
           var url = value.url;
@@ -48,6 +44,8 @@ $(document).ready(function () {
       .fail(function (err) {
         console.log('IN AJAX FAIL');
         throw err;
+      }).always(function(){
+        $('#loader').remove();
       });
 
     // add in the loading image in html hidden //
