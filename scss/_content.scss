@@ -4,31 +4,34 @@ body{
   font-family: $defaultffont;
   font-size: $defaultfontsize;
   color: white;
-  width:100%;
-  height:100;
+  height:100vh;
 }
 
-.header-container{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-content: center;
-}
 
 header{
-  text-align:center;
-  @include tablet{
-    flex-direction:row;
-  }
+  height:90%;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
-.logo img{
-  position: relative;
-  padding-bottom: 0.5rem;
-  padding-top:70%;
-  @include tablet{
-    justify-content:flex-start
-
+.logo-container{
+  margin: 0 auto;
+  text-align: center;
+    @include tablet{
+      display: flex;
+      flex-direction: row;
+  }
+}
+.section-container{
+   @include tablet{
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
   }
 }
 
@@ -36,26 +39,14 @@ h1{
   padding:0.5rem;
   font-size: 1rem;
   @include tablet{
-    justify-content:flex-end;
   }
 }
 
 .drop-down{
   margin: 0 auto;
   font-size:1rem;
-  width:50%;
-  @include tablet{
-  }
-
-
+  width: 50%;
 }
-
-
-
-
-
-
-
 
 .stories{
   display:flex;
@@ -77,10 +68,10 @@ li {
   background-size: cover;
   position: relative;
   @include tablet{
-  width:33.33%;
+  flex: 1 0 33.33%;
   }
   @include desktop{
-  width:25%;
+  flex: 1 0 25%;
   }
 }
 .headline{
@@ -98,7 +89,7 @@ footer{
   position: absolute;
   bottom:0;
   width:100%;
-  height:3rem;
+  height:10%;
   text-align:center;
 }
 footer p{

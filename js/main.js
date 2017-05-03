@@ -6,6 +6,13 @@ $(document).ready(function () {
   //preventing the default refresh from happening//
 
   $('.drop-down').on('change', function (event) {
+
+    $('.logo img').css('padding-top','0px');
+
+
+
+
+
     $('.loader').before('<img src="../assets/images/ajax-loader.gif" id="loader>')
     event.preventDefault();
     $('.stories').empty();
