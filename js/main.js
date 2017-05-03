@@ -1,7 +1,8 @@
 // The document is ready
 $(document).ready(function () {
 
-
+  //setting up the listener to wait for an event//
+  //adding the loader//
   //preventing the default refresh from happening//
 
   $('.drop-down').on('change', function (event) {
@@ -9,21 +10,16 @@ $(document).ready(function () {
     event.preventDefault();
     $('.stories').empty();
 
-    var selection = $('.drop-down option:selected').filter(':selected').val();
+    var newscategory = $('.drop-down option:selected').filter(':selected').val();
 
-
-    // Built by LucyBot. www.lucybot.com
-    var url = 'https://api.nytimes.com/svc/topstories/v2/' + selection + '.json';
+    var url = 'https://api.nytimes.com/svc/topstories/v2/' + newscategory + '.json';
     url += '?' + $.param({
       'api-key': "d390d4787e77488aa56edb4391f01cfb"
     });
-
-
     $.ajax({
       url: url,
       method: 'GET',
-    })
-      .done(function (response) {
+    }).done(function (response) {
         var results = response.results;
         var filteredList = results.filter(function (item) { return item.multimedia.length }).slice(0, 12);
         $.each(filteredList, function (key, value) {
@@ -32,11 +28,10 @@ $(document).ready(function () {
           var pic = value.multimedia[4].url;
           var abstract = value.abstract;
           var link = '';
-
-          link += '<li class="article-list" style="background-image:url('+pic +')">';
           link += '<a href="' + url + '">' +
-         '<p class="headline">' + abstract + '</p> </a>';
-          link += '</li>';
+          link += '<li class="article-list" style="background-image:url('+pic +')">';
+         '<p class="headline">' + abstract + '</p>';
+          link += '</li></a>';
 
           $('.stories').append(link);
         })
