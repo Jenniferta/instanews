@@ -1,12 +1,25 @@
-
 body{
   background-color: black;
   font-family: $defaultffont;
   font-size: $defaultfontsize;
-  color: white;
+  color: $hex-code;
   height:100vh;
 }
 
+.loader{
+  position: fixed;
+  width: 100vw;
+  height:100vh;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background: rgba(0, 0, 0, 0.6);
+  img{
+    width:150px;
+    height:150px;
+    }
+  }
 
 header{
   height:90%;
@@ -15,54 +28,135 @@ header{
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  margin-top:5px;
 }
 
 .logo-container{
   margin: 0 auto;
   text-align: center;
-    @include tablet{
-      display: flex;
-      flex-direction: row;
-      }
-     @include desktop{
-      padding-left: 5rem;
-      margin: 0 0;
-      align-content: flex-start;
+  font-size:12px;
+  img{
+    margin:0;
+    height:220px;
+    }
+  @include tablet{
+    display: flex;
+    flex-direction: row;
+    }
+  @include desktop{
+    padding-left: 2rem;
+    margin: 0 0;
+    align-content: flex-start;
+    }
   }
-}
-.section-container{
-   @include tablet{
-      width:100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-content: center;
-   }
-       @include desktop{
-        padding-left: 5rem;
-        text-align: left;
-    }
-}
 
-h1{
-  padding:0.5rem;
-  font-size: 1rem;
-   @include desktop{
-      margin: 0 0;
-      padding-left:0rem;
-      padding-down: 2rem;
+.section-container{
+  padding-bottom:15px;
+  font-size: 12px;
+  margin-top:1rem;
+  h1{
+    margin-bottom:1rem;
     }
-}
+  @include tablet{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-size:14px;
+    }
+   @include desktop{
+    margin: 0 0;
+    padding-left:0rem;
+    padding-down: 2rem;
+    font-size:1rem;
+    text-align: left;
+    }
+  }
 
 .drop-down{
   margin: 0 auto;
-  width: 50%;
+  width:107px;
+  height:32px;
+  @include desktop{
+    margin: 0 0;
+    align-content: flex-start;
+    }
+  }
+
+footer{
+  position: fixed;
+  bottom:0;
+  width:100%;
+  height:9%;
+  p{
+    font-size: 0.9rem;
+    color:#c2c2c2;
+    text-align: center;
+    }
    @include desktop{
-      margin: 0 0;
-      align-content: flex-start;
-      width:10%;
+    text-align: left;
+    padding-left:1.5rem;
+    }
+  }
+
+//activated//
+
+header.activated{
+  height: 240px;
+  max-width:600px;
+  margin:0;
+  padding:32px;
+  @include tablet{
+    height:72px;
+    max-width:999px;
+  }
+  @include desktop{
+    height:72px;
+  }
+}
+
+header.activated .logo-container{
+  height:220px;
+  width:300px;
+  @include tablet{
+  height:135px;
+  max-width:600px;
+  padding-right:300px;
+  }
+  img{
+    width:150px;
+    height:150px;
+    @include tablet{
+      width:67px;
+      height:67px;
+      }
     }
 }
+
+header.activated .section-container{
+  padding:10px;
+  margin:0;
+  @include tablet{
+    text-align:left;
+    padding-left:60px;
+  }
+}
+header.activated select.drop-down{
+  margin: 0 auto;
+  width: 107px;
+  height: 32px;
+  @include tablet{
+  margin:0;
+  height:32px;
+  display: flex;
+  justify-content: flex-start;
+  }
+  @include desktop{
+  align-content: flex-start;
+  font-size:1rem;
+    }
+  }
 
 .stories{
   display:flex;
@@ -78,13 +172,13 @@ h1{
     }
 }
 
-li {
+a, li{
   width:100%;
   height: 25rem;
   background-size: cover;
   position: relative;
   @include tablet{
-  flex: 1 0 33.33%;
+  flex: 1 0 50%;
   }
   @include desktop{
   flex: 1 0 25%;
@@ -99,16 +193,4 @@ li {
 a {
   text-decoration: none;
   color: white;
-}
-
-footer{
-  position: absolute;
-  bottom:0;
-  width:100%;
-  height:10%;
-  text-align:center;
-}
-footer p{
-  font-size: 1rem;
-  color:#c2c2c2;
 }

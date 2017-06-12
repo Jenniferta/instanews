@@ -1,21 +1,22 @@
 // The document is ready
+console.log('hello2');
 $(document).ready(function () {
 
   //setting up the listener to wait for an event//
   //adding the loader//
   //preventing the default refresh from happening//
-
+  console.log('hello');
   $('.loader').hide();
+
 
   $('.drop-down').on('change', function (event) {
     $('.loader').show();
-    $('header').addClass( 'activated' );
     $('.logo img').css('padding-top','0px');
+
     event.preventDefault();
     $('.stories').empty();
 
-
-    var newscategory = $('.drop-down option:selected').val();
+    var newscategory = $('.drop-down option:selected').filter(':selected').val();
 
     var url = 'https://api.nytimes.com/svc/topstories/v2/' + newscategory + '.json';
     url += '?' + $.param({
@@ -33,11 +34,10 @@ $(document).ready(function () {
           var pic = value.multimedia[4].url;
           var abstract = value.abstract;
           var link = '';
-          link += '<a href="' + url + '">';
+          link += '<a href="' + url + '">' +
           link += '<li class="article-list" style="background-image:url('+pic +')">';
-          link += '<p class="headline">' + abstract + '</p>';
+         '<p class="headline">' + abstract + '</p>';
           link += '</li></a>';
-
 
           $('.stories').append(link);
         })
